@@ -108,7 +108,7 @@ app.post('/api/generate', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`\n  Aizo API running on http://localhost:${PORT}`);
+  console.log(`\n  PitchIQ API running on http://localhost:${PORT}`);
   console.log(`  Model: ${MODEL}`);
   if (!API_KEY) {
     console.warn('  ⚠  ANTHROPIC_API_KEY is not set, /api/generate will return 500.\n');

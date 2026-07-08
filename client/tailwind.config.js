@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Aizo design system
+        // PitchIQ design system
         canvas: '#EEF0F5', // light blue-grey page background
         ink: '#0a0a0a', // primary text / dark sections
         muted: '#6B7280', // secondary text

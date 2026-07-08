@@ -1,9 +1,9 @@
 {
-  "name": "aizo-server",
+  "name": "pitchiq-server",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Express backend for Aizo — streams Claude-generated proposals.",
+  "description": "Express backend for PitchIQ, streams Claude-generated proposals.",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch index.js",

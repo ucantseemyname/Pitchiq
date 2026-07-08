@@ -1,5 +1,5 @@
 /**
- * Prompt construction for Aizo proposal generation.
+ * Prompt construction for PitchIQ proposal generation.
  *
  * The model is asked to emit each section delimited by an unambiguous marker
  * (`[[SECTION:key]]`). This lets the client parse sections incrementally as the

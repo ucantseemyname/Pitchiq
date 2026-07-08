@@ -1,4 +1,4 @@
-# Aizo — AI Proposal Generator
+# PitchIQ — AI Proposal Generator
 
 Generate winning, client-ready proposals in seconds. Fill out a short multi-step
 form and Claude writes a structured, seven-section proposal — streamed live —
@@ -27,7 +27,7 @@ that you can export as a polished, branded PDF.
 ## Project structure
 
 ```
-Aizo/
+PitchIQ/
 ├── client/                 # React + Vite + Tailwind frontend
 │   ├── src/
 │   │   ├── components/      # Atomic design: atoms / molecules / organisms
