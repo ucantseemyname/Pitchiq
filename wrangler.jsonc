@@ -7,6 +7,11 @@
   "observability": {
     "enabled": true
   },
+  // Build the SPA (client/dist) as part of `wrangler deploy`, so the deploy is
+  // self-contained even if no separate build command is configured.
+  "build": {
+    "command": "npm run build"
+  },
   "assets": {
     // The built SPA. Cloudflare runs the build (npm run build) before deploy,
     // which emits client/dist.
