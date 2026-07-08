@@ -10,7 +10,9 @@
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix client run dev",
     "build": "npm --prefix client install && npm --prefix client run build",
-    "start": "npm --prefix server start"
+    "start": "npm --prefix server start",
+    "deploy": "npm run build && npx wrangler deploy",
+    "cf:dev": "npm run build && npx wrangler dev"
   },
   "devDependencies": {
     "typescript": "^5.0.0",

@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pitchiq",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-07-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    // The built SPA. Cloudflare runs the build (npm run build) before deploy,
+    // which emits client/dist.
+    "directory": "client/dist",
+    "binding": "ASSETS",
+    // Serve index.html for unmatched client-side routes (/generate, /proposal).
+    "not_found_handling": "single-page-application",
+    // Always run the Worker first so /api/* is handled by our code rather than
+    // being caught by the SPA fallback.
+    "run_worker_first": true
+  }
+}

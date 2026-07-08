@@ -1,19 +1,18 @@
 /**
- * Cloudflare Pages Function: POST /api/generate
+ * POST /api/generate handler (Cloudflare Workers runtime).
  *
- * The production equivalent of the Express `/api/generate` route. Cloudflare
- * Pages is a static host, so the Node/Express backend does not run there; this
- * Worker-runtime function calls the Anthropic API directly (via fetch, since the
- * Node SDK is not suited to the Workers runtime) and re-streams the model's text
- * back to the browser as `text/plain`. The client parses the delimited
- * `[[SECTION:key]]` markers incrementally for the live typing effect, exactly as
- * it does against the local Express server.
+ * The production equivalent of the Express `/api/generate` route. It calls the
+ * Anthropic API directly (via fetch, since the Node SDK is not suited to the
+ * Workers runtime) and re-streams the model's text back to the browser as
+ * `text/plain`. The client parses the delimited `[[SECTION:key]]` markers
+ * incrementally for the live typing effect, exactly as against the local
+ * Express server.
  *
  * Prompt construction and validation are imported from the existing server
  * modules so there is a single source of truth.
  */
-import { validateProposalInput } from '../../server/validation.js';
-import { SYSTEM_PROMPT, buildUserPrompt } from '../../server/prompt.js';
+import { validateProposalInput } from '../server/validation.js';
+import { SYSTEM_PROMPT, buildUserPrompt } from '../server/prompt.js';
 
 const DEFAULT_MODEL = 'claude-sonnet-4-6';
 
@@ -24,7 +23,7 @@ function json(data, status = 200) {
   });
 }
 
-export async function onRequestPost({ request, env }) {
+export async function handleGenerate(request, env) {
   let body;
   try {
     body = await request.json();
@@ -38,7 +37,7 @@ export async function onRequestPost({ request, env }) {
   const apiKey = env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return json(
-      { error: 'Server is missing ANTHROPIC_API_KEY. Add it in the Cloudflare Pages environment settings.' },
+      { error: 'Server is missing ANTHROPIC_API_KEY. Add it in the Cloudflare Worker settings.' },
       500);
   }
 
@@ -133,7 +132,6 @@ export async function onRequestPost({ request, env }) {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'no-cache, no-transform',
-      'X-Accel-Buffering': 'no',
     },
   });
 }

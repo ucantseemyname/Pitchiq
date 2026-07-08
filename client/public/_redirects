@@ -1,4 +1,0 @@
-# SPA fallback: serve index.html for client-side routes (/generate, /proposal).
-# Cloudflare Pages evaluates Functions (/api/*) and real static assets first,
-# so this only catches unmatched app routes.
-/*    /index.html   200

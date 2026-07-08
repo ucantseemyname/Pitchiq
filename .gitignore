@@ -10,6 +10,9 @@ node_modules/
 client/dist/
 dist/
 
+# Cloudflare Wrangler
+.wrangler/
+
 # Logs
 *.log
 npm-debug.log*
